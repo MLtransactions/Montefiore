@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl" id="htmlElement">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>מגרש למכירה | שכונת מונטיפיורי | תל אביב</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #0a1929 0%, #1a3a52 100%);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* Language Selector */
+.language-selector {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 12px 20px;
+    border-radius: 50px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    display: flex;
+    gap: 8px;
+    z-index: 1000;
+}
+
+.lang-btn {
+    background: linear-gradient(135deg, #d4af37 0%, #f0d891 100%);
+    border: none;
+    padding: 8px 16px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 12px;
+    transition: all 0.3s ease;
+    color: #0a1929;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.lang-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.4);
+}
+
+.lang-btn.active {
+    background: linear-gradient(135deg, #b8860b 0%, #daa520 100%);
+    color: white;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 80px auto 40px;
+    background: linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%);
+    padding: 50px;
+    border-radius: 15px;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
+    animation: slideUp 0.6s ease;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+h1 {
+    background: linear-gradient(135deg, #0a1929 0%, #1a3a52 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+    font-size: 42px;
+    margin-bottom: 40px;
+}
+
+h2 {
+    color: #b8860b;
+    border-bottom: 3px solid;
+    border-image: linear-gradient(90deg, #d4af37, #b8860b) 1;
+    padding-bottom: 12px;
+    margin-top: 35px;
+    margin-bottom: 20px;
+    font-size: 28px;
+}
+
+p, li {
+    font-size: 18px;
+    line-height: 1.9;
+    color: #333;
+}
+
+ul {
+    list-style: none;
+    margin-bottom: 20px;
+}
+
+li {
+    padding: 12px 0 12px 30px;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+li:before {
+    content: "✦";
+    position: absolute;
+    right: 0;
+    color: #d4af37;
+    font-size: 16px;
+}
+
+li:hover {
+    padding-right: 40px;
+}
+
+.price-box {
+    background: linear-gradient(135deg, #0a1929 0%, #1a3a52 100%);
+    color: white;
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+    margin: 30px 0;
+    border-left: 5px solid #d4af37;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.price-label {
+    font-size: 16px;
+    margin-bottom: 10px;
+    opacity: 0.9;
+}
+
+.price-value {
+    font-size: 48px;
+    font-weight: bold;
+    background: linear-gradient(135deg, #d4af37, #f0d891);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.feature-card {
+    background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+    padding: 20px;
+    border-radius: 10px;
+    border-right: 4px solid #d4af37;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(212, 175, 55, 0.2);
+    background: linear-gradient(135deg, #fff9e6 0%, #ffe680 100%);
+}
+
+.feature-card strong {
+    color: #0a1929;
+    display: block;
+    margin-bottom: 8px;
+}
+
+footer {
+    margin-top: 50px;
+    padding-top: 30px;
+    border-top: 2px solid #ddd;
+    text-align: center;
+    color: #666;
+    font-size: 14px;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 30px 20px;
+        margin-top: 120px;
+    }
+    
+    h1 {
+        font-size: 28px;
+    }
+    
+    h2 {
+        font-size: 22px;
+    }
+    
+    .price-value {
+        font-size: 36px;
+    }
+    
+    .language-selector {
+        top: auto;
+        bottom: 20px;
+        right: 50%;
+        transform: translateX(50%);
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+[hidden] {
+    display: none !important;
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- Language Selector -->
+<div class="language-selector">
+    <button class="lang-btn active" onclick="switchLanguage('he')">עברית</button>
+    <button class="lang-btn" onclick="switchLanguage('en')">English</button>
+    <button class="lang-btn" onclick="switchLanguage('ru')">Русский</button>
+    <button class="lang-btn" onclick="switchLanguage('fr')">Français</button>
+</div>
+
+<!-- Hebrew Content -->
+<div id="content-he" class="container">
+
+<h1>מגרש למכירה – שכונת מונטיפיורי | תל אביב</h1>
+
+<h2>פרטי הנכס</h2>
+
+<div class="features-grid">
+    <div class="feature-card">
+        <strong>📍 מיקום</strong>
+        שכונת מונטיפיורי, תל אביב
+    </div>
+    <div class="feature-card">
+        <strong>📏 שטח</strong>
+        כ-950 מ"ר
+    </div>
+    <div class="feature-card">
+        <strong>🏠 סוג הנכס</strong>
+        קרקע פרטית
+    </div>
+    <div class="feature-card">
+        <strong>🔨 ייעוד</strong>
+        לפיתוח עתידי
+    </div>
+</div>
+
+<h2>פוטנציאל תכנוני</h2>
+
+<p>
+המגרש נהנה מפוטנציאל משמעותי להשבחה, כאשר קיימות זכויות בנייה בהיקף של כ-פי 4
+משטח הקרקע, בכפוף לתוכניות המאושרות ולהיתרי הבנייה הרלוונטיים.
+</p>
+
+<p>
+כיום קידום הזכויות מצוי במסגרת הליכים תכנוניים הקשורים לתוכנית המטרו,
+אשר עשויה להשפיע על היקף הבנייה והפיתוח העתידי באזור.
+</p>
+
+<h2>יתרונות הנכס</h2>
+
+<ul>
+    <li>מיקום אסטרטגי במרכז תל אביב</li>
+    <li>סמוך לצירי תחבורה מרכזיים</li>
+    <li>אזור בעל ביקושים גבוהים למגורים, מסחר ומשרדים</li>
+    <li>פוטנציאל השבחה משמעותי</li>
+    <li>מתאים ליזמים, חברות בנייה, קרנות השקעה ומשקיעים פרטיים</li>
+    <li>הזדמנות נדירה לרכישת קרקע באזור מתפתח</li>
+</ul>
+
+<h2>הערכת שווי</h2>
+
+<p>לפי שמאות שנמסרה על ידי בעלי הנכס:</p>
+
+<div class="price-box">
+    <div class="price-label">שווי שמאי</div>
+    <div class="price-value">₪ 34,000,000</div>
+</div>
+
+<div class="price-box">
+    <div class="price-label">מחיר מבוקש</div>
+    <div class="price-value">₪ 26,000,000</div>
+</div>
+
+<h2>הערות</h2>
+
+<p>
+המידע המוצג הינו לצורכי התרשמות ראשונית בלבד.
+על הרוכש לבצע את כל הבדיקות המשפטיות, התכנוניות, ההנדסיות והשמאיות באופן עצמאי.
+כל עסקה כפופה להסכם מחייב בין הצדדים.
+</p>
+
+<footer>
+    מגרש למכירה | שכונת מונטיפיורי | תל אביב
+</footer>
+
+</div>
+
+<!-- English Content -->
+<div id="content-en" class="container" hidden>
+
+<h1>Land for Sale - Montefiore District | Tel Aviv</h1>
+
+<h2>Property Details</h2>
+
+<div class="features-grid">
+    <div class="feature-card">
+        <strong>📍 Location</strong>
+        Montefiore District, Tel Aviv
+    </div>
+    <div class="feature-card">
+        <strong>📏 Area</strong>
+        Approx. 950 m²
+    </div>
+    <div class="feature-card">
+        <strong>🏠 Property Type</strong>
+        Private Land
+    </div>
+    <div class="feature-card">
+        <strong>🔨 Designation</strong>
+        For Future Development
+    </div>
+</div>
+
+<h2>Planning Potential</h2>
+
+<p>
+The plot enjoys significant appreciation potential, with building rights of approximately 4 times the land area, subject to approved plans and relevant building permits.
+</p>
+
+<p>
+Currently, the promotion of rights is in the context of planning procedures related to the Metro plan, which may affect the scope of construction and future development in the area.
+</p>
+
+<h2>Property Advantages</h2>
+
+<ul>
+    <li>Strategic location in central Tel Aviv</li>
+    <li>Close to major transportation axes</li>
+    <li>Area with high demand for residential, commercial and office spaces</li>
+    <li>Significant appreciation potential</li>
+    <li>Suitable for entrepreneurs, construction companies, investment funds and private investors</li>
+    <li>Rare opportunity to purchase land in a developing area</li>
+</ul>
+
+<h2>Valuation</h2>
+
+<p>According to an appraiser's report provided by the property owner:</p>
+
+<div class="price-box">
+    <div class="price-label">Appraised Value</div>
+    <div class="price-value">₪ 34,000,000</div>
+</div>
+
+<div class="price-box">
+    <div class="price-label">Asking Price</div>
+    <div class="price-value">₪ 26,000,000</div>
+</div>
+
+<h2>Notes</h2>
+
+<p>
+The information presented is for initial impression purposes only.
+The buyer must independently conduct all legal, planning, engineering and appraisal inspections.
+Any transaction is subject to a binding agreement between the parties.
+</p>
+
+<footer>
+    Land for Sale | Montefiore District | Tel Aviv
+</footer>
+
+</div>
+
+<!-- Russian Content -->
+<div id="content-ru" class="container" hidden>
+
+<h1>Земельный участок на продажу - квартал Монтефиоре | Тель-Авив</h1>
+
+<h2>Детали недвижимости</h2>
+
+<div class="features-grid">
+    <div class="feature-card">
+        <strong>📍 Местоположение</strong>
+        Квартал Монтефиоре, Тель-Авив
+    </div>
+    <div class="feature-card">
+        <strong>📏 Площадь</strong>
+        Примерно 950 м²
+    </div>
+    <div class="feature-card">
+        <strong>🏠 Тип недвижимости</strong>
+        Частная земля
+    </div>
+    <div class="feature-card">
+        <strong>🔨 Назначение</strong>
+        Для будущего развития
+    </div>
+</div>
+
+<h2>Потенциал планирования</h2>
+
+<p>
+Участок имеет значительный потенциал роста стоимости с правами на строительство примерно в 4 раза больше площади земли, в соответствии с утвержденными планами и соответствующими разрешениями на строительство.
+</p>
+
+<p>
+В настоящее время продвижение прав находится в контексте процедур планирования, связанных с планом метро, который может повлиять на объем строительства и будущего развития в этом районе.
+</p>
+
+<h2>Преимущества недвижимости</h2>
+
+<ul>
+    <li>Стратегическое расположение в центре Тель-Авива</li>
+    <li>Близко к основным транспортным магистралям</li>
+    <li>Район с высоким спросом на жилые, коммерческие и офисные помещения</li>
+    <li>Значительный потенциал роста стоимости</li>
+    <li>Подходит для предпринимателей, строительных компаний, инвестиционных фондов и частных инвесторов</li>
+    <li>Редкая возможность приобрести землю в развивающемся районе</li>
+</ul>
+
+<h2>Оценка стоимости</h2>
+
+<p>По отчету оценщика, предоставленному владельцем недвижимости:</p>
+
+<div class="price-box">
+    <div class="price-label">Оценочная стоимость</div>
+    <div class="price-value">₪ 34,000,000</div>
+</div>
+
+<div class="price-box">
+    <div class="price-label">Запрашиваемая цена</div>
+    <div class="price-value">₪ 26,000,000</div>
+</div>
+
+<h2>Примечания</h2>
+
+<p>
+Представленная информация предназначена только для первоначального ознакомления.
+Покупатель должен независимо провести все юридические, планировочные, инженерные и оценочные проверки.
+Любая сделка подлежит заключению обязательного договора между сторонами.
+</p>
+
+<footer>
+    Земельный участок на продажу | Квартал Монтефиоре | Тель-Авив
+</footer>
+
+</div>
+
+<!-- French Content -->
+<div id="content-fr" class="container" hidden>
+
+<h1>Terrain à vendre - Quartier Montefiore | Tel Aviv</h1>
+
+<h2>Détails de la propriété</h2>
+
+<div class="features-grid">
+    <div class="feature-card">
+        <strong>📍 Localisation</strong>
+        Quartier Montefiore, Tel Aviv
+    </div>
+    <div class="feature-card">
+        <strong>📏 Superficie</strong>
+        Environ 950 m²
+    </div>
+    <div class="feature-card">
+        <strong>🏠 Type de propriété</strong>
+        Terrain privé
+    </div>
+    <div class="feature-card">
+        <strong>🔨 Désignation</strong>
+        Pour développement futur
+    </div>
+</div>
+
+<h2>Potentiel de planification</h2>
+
+<p>
+Le terrain jouit d'un potentiel d'appréciation significatif, avec des droits de construction d'environ 4 fois la surface du terrain, sous réserve des plans approuvés et des permis de construction pertinents.
+</p>
+
+<p>
+Actuellement, la promotion des droits s'inscrit dans le contexte des procédures de planification liées au plan du métro, qui peut affecter l'étendue de la construction et du développement futur dans la région.
+</p>
+
+<h2>Avantages de la propriété</h2>
+
+<ul>
+    <li>Localisation stratégique au centre de Tel Aviv</li>
+    <li>Proche des principaux axes de transport</li>
+    <li>Zone avec une forte demande de résidences, commerces et espaces de bureau</li>
+    <li>Potentiel d'appréciation significatif</li>
+    <li>Convient aux entrepreneurs, entreprises de construction, fonds d'investissement et investisseurs privés</li>
+    <li>Opportunité rare d'acquérir des terres dans une zone en développement</li>
+</ul>
+
+<h2>Évaluation</h2>
+
+<p>Selon un rapport d'expert fourni par le propriétaire du bien:</p>
+
+<div class="price-box">
+    <div class="price-label">Valeur d'expertise</div>
+    <div class="price-value">₪ 34,000,000</div>
+</div>
+
+<div class="price-box">
+    <div class="price-label">Prix demandé</div>
+    <div class="price-value">₪ 26,000,000</div>
+</div>
+
+<h2>Remarques</h2>
+
+<p>
+Les informations présentées sont à titre d'impression initiale uniquement.
+L'acheteur doit effectuer indépendamment tous les contrôles juridiques, d'urbanisme, d'ingénierie et d'expertise.
+Toute transaction est sujette à un accord contraignant entre les parties.
+</p>
+
+<footer>
+    Terrain à vendre | Quartier Montefiore | Tel Aviv
+</footer>
+
+</div>
+
+<script>
+function switchLanguage(lang) {
+    // Hide all content
+    document.getElementById('content-he').hidden = true;
+    document.getElementById('content-en').hidden = true;
+    document.getElementById('content-ru').hidden = true;
+    document.getElementById('content-fr').hidden = true;
+    
+    // Show selected language
+    document.getElementById('content-' + lang).hidden = false;
+    
+    // Update active button
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    event.target.classList.add('active');
+    
+    // Update HTML lang attribute
+    document.getElementById('htmlElement').lang = lang;
+    if (lang === 'he' || lang === 'ar') {
+        document.getElementById('htmlElement').dir = 'rtl';
+    } else {
+        document.getElementById('htmlElement').dir = 'ltr';
+    }
+}
+</script>
+
+</body>
+</html>
